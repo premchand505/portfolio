@@ -67,7 +67,7 @@ export default function AboutSection() {
           />
         </motion.h1>
         <p className="text-2xl my-10 text-white/80 text-center font-light">
-          I'm keenly interested in developing full stack applications with interactive
+          I am keenly interested in developing full stack applications with interactive
           user experience and enhanced performance for scalability
         </p>
       </div>

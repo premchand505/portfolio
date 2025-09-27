@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion"
 import { FiArrowRight } from "react-icons/fi"
-
+import Image from "next/image"
 const Homesection = () => {
 
     return (
@@ -55,7 +55,7 @@ const Homesection = () => {
                         duration: 1.7,
                     }}
                     className="text-xl text-slate-300 font-light ">
-                    I'm a passionate developer specializing in web development,creating user-friendly and innovative solutions.<br /><br />
+                    I am a passionate developer specializing in web development,creating user-friendly and innovative solutions.<br /><br />
                     With expertise in React, Vite, and modern JavaScript, I build responsive and dynamic applications to solve real-world problems.
                 </motion.p>
                 <div
@@ -91,7 +91,9 @@ const Homesection = () => {
                     duration: 1.7,
                 }}
                 className=" my-6 w-60 lg:w-80 ">
-                <img src="profile.jpg" alt="" className="w-full h-auto object-cover rounded-lg" />
+                    <Image  src="profile.jpg" alt="" className="w-full h-auto object-cover rounded-lg" />
+              
+
             </motion.div>
 
 
