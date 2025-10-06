@@ -12,7 +12,7 @@ export default function ProjectsSection() {
       description:
         'A full-stack web app that converts video audio into dynamic haptic feedback patterns. Built with React, FastAPI, FFmpeg, and Librosa. Users can preview haptics in-browser and download JSON/AHAP bundles.',
       image: '/haptic-coverpage.png',
-      link: '/project1',
+      link: 'https://hapticvideo.vercel.app/',
       hosting:'',
     },
     {
@@ -20,7 +20,7 @@ export default function ProjectsSection() {
       description:
         'A social event-hosting platform where users can create and join events, explore nearby events using interactive maps, and engage in live chat rooms during events. Built with React, Node.js, Socket.IO, and Map APIs.',
       image: '/haptic-coverpage.png',
-      link: '/project2',
+      link: 'https://eventsphere-frontend.vercel.app/',
       hosting:'',
     },
     {
@@ -28,7 +28,7 @@ export default function ProjectsSection() {
       description:
         'Landing page for Fitness Edge, featuring modern UI, subscription details, and a showcase of features like calorie logging, personalized plans, and mentorship integration. Built with React and TailwindCSS.',
       image: '/gym-coverpage.png',
-      link: '/project3',
+      link: 'https://fitnessedge-two.vercel.app/',
       hosting:'',
     },
   ];
@@ -87,7 +87,7 @@ export default function ProjectsSection() {
                 <p className="text-white-200 mb-4">{project.description}</p>
                 <div className='flex gap-3'>
                   <Link
-                  href={project.hosting}
+                  href={project.link}
                   className="flex justify-around items-center w-44 bg-white text-black px-5 py-2 rounded-xl shadow hover:scale-105 transition"
                 >
                   View Project <FiArrowRight />

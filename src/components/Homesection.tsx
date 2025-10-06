@@ -79,22 +79,27 @@ const Homesection = () => {
                     </motion.a>
                 </div>
             </div>
-
-            <motion.div
-                initial={{ opacity: 0, z: -50, scale: 0.25 }}
-                animate={{ opacity: 1, z: 0, scale: 1 }}
-                transition={{
-                    type: "spring",
-                    damping: 25,
-                    stiffness: 40,
-                    delay: 1.7,
-                    duration: 1.7,
-                }}
-                className=" my-6 w-60 lg:w-80 ">
-                    <Image  src="profile.jpg" alt="" className="w-full h-auto object-cover rounded-lg" />
-              
-
-            </motion.div>
+<motion.div
+      initial={{ opacity: 0, z: -50, scale: 0.25 }}
+      animate={{ opacity: 1, z: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        damping: 25,
+        stiffness: 40,
+        delay: 1.7,
+        duration: 1.7,
+      }}
+      className="my-6 w-60 lg:w-80 relative h-80" // Add 'relative' and a fixed height for the container
+                                                  // 'h-72' is just an example, adjust as needed
+    >
+      <Image
+        src="/cropped-profile.png"
+        alt="Your profile" // Always provide a meaningful alt text
+        layout="fill"     // Image will fill the parent
+        objectFit="cover" // Ensure it covers the area, cropping if necessary
+        className="rounded-lg" // Tailwind classes for styling (object-cover is already handled by prop)
+      />
+    </motion.div>
 
 
 

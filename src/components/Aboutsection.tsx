@@ -80,7 +80,8 @@ export default function AboutSection() {
             6 month industrial internship in python full stack development
           </p>
         </div>
-        <div className="flex flex-col gap-2 p-6 bg-white/5 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+
+       {/*<div className=" flex flex-col gap-2 p-6 bg-white/5 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
           <h1 className="text-2xl font-medium text-white">
             Python Full Stack Developer | HMI Engineering Services
           </h1>
@@ -88,7 +89,9 @@ export default function AboutSection() {
             6 month industrial internship in python full stack development
           </p>
         </div>
+        */}
       </div>
+        
 
       {/* Tech Stack */}
       <div className="flex flex-col pt-5 items-center justify-center">
