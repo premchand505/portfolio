@@ -1,11 +1,12 @@
 'use client';
 
 import { motion, Transition } from 'framer-motion';
-import { FaReact, FaPython, FaDocker, FaGitAlt } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiNestjs, SiFastapi, SiPostgresql, SiGooglecloud, SiPrisma } from 'react-icons/si';
-import { FiTarget, FiDatabase } from 'react-icons/fi';
+import { FiTarget } from 'react-icons/fi';
+import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaDocker } from 'react-icons/fa';
+import { SiNextdotjs, SiJavascript, SiTypescript,  SiTailwindcss,SiNestjs, SiFastapi, SiExpress, SiMongodb,SiGooglecloud, SiPrisma, SiPostgresql,SiAmazon} from 'react-icons/si';
+import { TbApi } from 'react-icons/tb';
 
-// Framer Motion Transition Configuration
+// Framer Motion Transition Configuration (SiTensorflow, SiScikitlearn, SiPandas, SiVercel) 
 const transitionConfig: Transition = {
     type: "spring", 
     stiffness: 80, 
@@ -32,11 +33,14 @@ export default function AboutSection() {
             description: 'Designing resilient, decoupled microservices for high throughput, focusing on robust API contract design.',
             tech: [
                 { name: 'NestJS', icon: <SiNestjs /> },
-                { name: 'RESTful APIs', icon: <SiFastapi /> },
+                { name: 'NodeJS', icon: <FaNodeJs /> },
+                { name: 'ExpressJs', icon: <SiExpress /> },
+                { name: 'RESTful APIs', icon: <TbApi /> },
                 { name: 'PostgreSQL', icon: <SiPostgresql /> },
+                 { name: 'MongoDb', icon: <SiMongodb /> },
                 { name: 'Prisma/SQLAlchemy', icon: <SiPrisma /> },
                 { name: 'Python', icon: <FaPython /> },
-                 { name: 'FastAPI', icon: <FiDatabase /> },
+                 { name: 'FastAPI', icon: <SiFastapi /> },
             ],
         },
         {
@@ -46,7 +50,10 @@ export default function AboutSection() {
             tech: [
                 { name: 'Docker', icon: <FaDocker /> },
                 { name: 'GCP Cloud Run', icon: <SiGooglecloud /> },
+                { name: 'AWS', icon: <SiAmazon /> },
                 { name: 'CI/CD & Git', icon: <FaGitAlt /> },
+                { name: 'GitHub/GitHub Actions', icon: <FaGithub /> },
+
             ],
         },
         {
@@ -57,6 +64,7 @@ export default function AboutSection() {
                 { name: 'Next.js', icon: <SiNextdotjs /> },
                 { name: 'React.js', icon: <FaReact /> },
                 { name: 'TypeScript', icon: <SiTypescript /> },
+                { name: 'JavaScript', icon: <SiJavascript /> },
                 { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
             ],
         },
@@ -73,8 +81,8 @@ export default function AboutSection() {
                     transition={transitionConfig}
                     className="relative inline-block text-4xl text-[#F8FAFC] font-extrabold pb-4 mb-16 mx-auto text-center w-full"
                 >
-                    System Architect Focus & Experience
-                    <span className="block w-24 h-1 bg-[#F97316] mt-2 mx-auto rounded-full"></span>
+                    Skills & Experience
+                    <span className="block  h-1 bg-[#F97316]/90 mt-2 mx-auto "></span>
                 </motion.h1>
 
                 {/* Main Two-Column Layout with Vertical Separator */}
@@ -90,7 +98,7 @@ export default function AboutSection() {
                         >
                             <h2 className="text-3xl font-bold text-[#F8FAFC] mb-4">My Professional Mandate</h2>
                             <p className="text-xl text-gray-400 font-light mb-10 border-l-4 border-[#3B82F6] pl-4">
-                                My mandate is full-stack architecture, focusing on **decoupling complexity** and achieving high performance in cloud environments. I translate client goals into **measurable technical solutions**.
+                                My mandate is full-stack architecture, focusing on decoupling complexity and achieving high performance in cloud environments. Currently Working on  integrating Ai/ML Microservices.
                             </p>
                         </motion.div>
                         
@@ -107,8 +115,8 @@ export default function AboutSection() {
                             </h1>
                             <p className="text-sm text-[#3B82F6] mb-4">HMI Engineering Services | 11/2024 - 04/2025</p>
                             <ul className="list-disc list-inside text-base text-gray-400 font-light space-y-1">
-                                <li>Developed HMI dashboards using **Django, React, and PostgreSQL**.</li>
-                                <li>Engineered and integrated **REST APIs** for real-time data management.</li>
+                                <li>Developed HMI dashboards using FastAPI, React, and PostgreSQL.</li>
+                                <li>Engineered and integrated REST APIs for real-time data management.</li>
                             </ul>
                         </motion.div>
                     </div>

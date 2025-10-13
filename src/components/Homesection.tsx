@@ -59,7 +59,7 @@ const Homesection = () => {
                         transition={{ ...fadeInUpTransition, delay: 0.6 }}
                         className="text-3xl md:text-4xl font-extrabold mt-2 mb-6 leading-tight text-[#3B82F6] border-l-4 border-[#F97316] pl-4"
                     >
-                        Architecting Scalable Sotware Systems.
+                        Architecting Scalable Software Systems.
                     </motion.h2>
 
                     <motion.p

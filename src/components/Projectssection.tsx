@@ -4,7 +4,7 @@ import { motion, Transition } from 'framer-motion';
 import { FiCode, FiExternalLink, FiZap, FiTarget, FiDatabase, FiActivity, FiTrendingUp } from 'react-icons/fi';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment } from 'react';
+
 
 // Framer Motion Transition Configuration for quick fade-in
 const transitionConfig: Transition = {
@@ -76,13 +76,28 @@ const projectData = [
         tag: 'Chrome Extension & Dashboard',
         description:
             'Developed a Manifest V3 Chrome Extension and React dashboard. Engineered a **DOM scraping engine** using Chrome.debugger API, achieving **95% accuracy** on Indeed. Features real-time cross-device synchronization using Firebase Firestore with optimistic UI updates.',
-        image: '/jobhunt-coverpage.png',
+        image: '/eventsphere-coverpage.png',
         live: '#',
         github: 'github.com/premchand505/job-hunt-navigator',
         techStack: ['React', 'TypeScript', 'Chrome API', 'Firebase Auth/Firestore'],
         metrics: [
             { icon: FiTarget, value: '95% Accuracy', label: 'Scraping', color: 'text-green-500' },
             { icon: FiDatabase, value: 'Optimistic UI', label: 'Sync', color: 'text-indigo-400' },
+        ]
+    },
+
+     {
+        title: 'Fitness Edge Landing Page',
+        tag: 'Gym Landing Page',
+        description:
+            'Designed and deployed a targeted landing page that simplified the user journey. Focused content and a clear call-to-action (CTA) funnel drove a 3x improvement in lead qualification compared to the original homepage.',
+        image: '/gym-coverpage.png',
+        live: 'https://fitnessedge-two.vercel.app/',
+        github: 'github.com/premchand505/job-hunt-navigator',
+        techStack: ['React', 'JavaScript', 'CSS3', 'HTML%'],
+        metrics: [
+            { icon: FiTarget, value: '25% Lead Conversion', label: 'LEADS', color: 'text-green-500' },
+            { icon: FiTarget, value: 'User Friendly UI', label: 'UI', color: 'text-indigo-400' },
         ]
     },
 ];
@@ -103,8 +118,8 @@ export default function ProjectsSection() {
                     transition={transitionConfig}
                     className="relative inline-block text-4xl text-[#F8FAFC] font-extrabold pb-4 mb-12 mx-auto text-center w-full"
                 >
-                    Featured Engineering Projects
-                    <span className="block w-1/2 h-1 bg-[#F97316] mt-2 mx-auto rounded-full"></span>
+                    Featured  Projects
+                    <span className="block  h-1 bg-[#F97316]/90 mt-2 mx-auto rounded-full"></span>
                 </motion.h1>
 
                 {/* Projects List */}

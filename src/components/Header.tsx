@@ -37,7 +37,7 @@ export default function Header() {
           className="flex space-x-2 items-center"
         >
           <span className="text-2xl font-extrabold text-[#F8FAFC] tracking-wider hover:text-[#F97316] transition-colors">
-            PREMCHAND.DEV
+            PREMCHAND G
           </span>
         </motion.div>
 
