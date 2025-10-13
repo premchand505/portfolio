@@ -1,139 +1,152 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaDocker } from 'react-icons/fa';
-import { SiNextdotjs, SiJavascript, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiTensorflow, SiScikitlearn, SiPandas, SiVercel } from 'react-icons/si';
-import { TbApi } from 'react-icons/tb';
+import { motion, Transition } from 'framer-motion';
+import { FaReact, FaPython, FaDocker, FaGitAlt } from 'react-icons/fa';
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiNestjs, SiFastapi, SiPostgresql, SiGooglecloud, SiPrisma } from 'react-icons/si';
+import { FiTarget, FiDatabase } from 'react-icons/fi';
+
+// Framer Motion Transition Configuration
+const transitionConfig: Transition = {
+    type: "spring", 
+    stiffness: 80, 
+    damping: 15,
+};
+
+// Unified Icon Styling Component (Used within the Timeline blocks)
+const TechIcon: React.FC<{ icon: React.ReactNode, name: string }> = ({ icon, name }) => (
+    <div className="flex items-center text-left space-x-2 p-1 border border-[#3B82F6]/20 rounded-md bg-[#0F172A] hover:bg-[#3B82F6]/10 transition-colors">
+        <div className="text-xl text-[#F97316]">{icon}</div>
+        <span className="text-xs font-semibold text-gray-400 whitespace-nowrap">
+            {name}
+        </span>
+    </div>
+);
+
 
 export default function AboutSection() {
-  const categories = [
-    {
-      title: 'Frontend',
-      tech: [
-        { name: 'React', icon: <FaReact className="text-4xl text-blue-500" /> },
-        { name: 'Next.js', icon: <SiNextdotjs className="text-4xl text-black" /> },
-        { name: 'JavaScript', icon: <SiJavascript className="text-4xl text-yellow-400" /> },
-        { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-4xl text-cyan-400" /> },
-      ],
-    },
-    {
-      title: 'Backend',
-      tech: [
-        { name: 'Node.js', icon: <FaNodeJs className="text-4xl text-green-500" /> },
-        { name: 'Express', icon: <SiExpress className="text-4xl text-gray-700" /> },
-        { name: 'REST API', icon: <TbApi className="text-4xl text-orange-400" /> },
-        { name: 'MongoDB', icon: <SiMongodb className="text-4xl text-green-600" /> },
-        { name: 'PostgreSQL', icon: <SiPostgresql className="text-4xl text-blue-600" /> },
-      ],
-    },
-    {
-      title: 'AI / ML',
-      tech: [
-        { name: 'Python', icon: <FaPython className="text-4xl text-yellow-500" /> },
-        { name: 'TensorFlow', icon: <SiTensorflow className="text-4xl text-orange-500" /> },
-        { name: 'scikit-learn', icon: <SiScikitlearn className="text-4xl text-blue-400" /> },
-        { name: 'Pandas', icon: <SiPandas className="text-4xl text-purple-500" /> },
-      ],
-    },
-    {
-      title: 'Others',
-      tech: [
-        { name: 'Git', icon: <FaGitAlt className="text-4xl text-red-500" /> },
-        { name: 'GitHub', icon: <FaGithub className="text-4xl text-black" /> },
-        { name: 'Vercel', icon: <SiVercel className="text-4xl text-black" /> },
-        { name: 'Docker', icon: <FaDocker className="text-4xl text-blue-500" /> },
-      ],
-    },
-  ];
+    // Grouped technologies for thematic display
+    const architecturalPillars = [
+        {
+            title: 'I. Backend & API Design',
+            icon: FiTarget,
+            description: 'Designing resilient, decoupled microservices for high throughput, focusing on robust API contract design.',
+            tech: [
+                { name: 'NestJS', icon: <SiNestjs /> },
+                { name: 'RESTful APIs', icon: <SiFastapi /> },
+                { name: 'PostgreSQL', icon: <SiPostgresql /> },
+                { name: 'Prisma/SQLAlchemy', icon: <SiPrisma /> },
+                { name: 'Python', icon: <FaPython /> },
+                 { name: 'FastAPI', icon: <FiDatabase /> },
+            ],
+        },
+        {
+            title: 'II. Cloud & Deployment',
+            icon: FaDocker,
+            description: 'Expertise in containerization, serverless deployment, and automating workflows for reliable, cost-effective infrastructure.',
+            tech: [
+                { name: 'Docker', icon: <FaDocker /> },
+                { name: 'GCP Cloud Run', icon: <SiGooglecloud /> },
+                { name: 'CI/CD & Git', icon: <FaGitAlt /> },
+            ],
+        },
+        {
+            title: 'III. Frontend Engineering',
+            icon: FaReact,
+            description: 'Building performance-optimized, modern user interfaces that convert leads and provide world-class user experiences.',
+            tech: [
+                { name: 'Next.js', icon: <SiNextdotjs /> },
+                { name: 'React.js', icon: <FaReact /> },
+                { name: 'TypeScript', icon: <SiTypescript /> },
+                { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+            ],
+        },
+    ];
 
-  return (
-    <section id="about" className="min-h-screen bg-gradient-to-r overflow-hidden to-black from-blue-900 p-16 scroll-snap-align-start">
-      {/* About Me */}
-      <div className="flex flex-col pt-5 items-center justify-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 40, duration: 1.7 }}
-          className="relative inline-block text-3xl text-white font-semibold py-10 group"
-        >
-          About Me
-          <motion.span
-            initial={{ width: 0 }}
-            whileInView={{ width: '100%' }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
-            className="absolute bottom-0 left-0 h-1 rounded-lg bg-white group-hover:w-full transition-all duration-300"
-          />
-        </motion.h1>
-        <p className="text-2xl my-10 text-white/80 text-center font-light">
-          I am keenly interested in developing full stack applications with interactive
-          user experience and enhanced performance for scalability
-        </p>
-      </div>
-      <div className="w-full my-20 flex flex-col gap-10 md:flex-row md:gap-0 justify-around items-center">
-        <div className="flex flex-col gap-2 p-6 bg-white/5 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
-          <h1 className="text-2xl font-medium text-white">
-            Python Full Stack Developer | HMI Engineering Services
-          </h1>
-          <p className="font-light text-xl text-white/80">
-            6 month industrial internship in python full stack development
-          </p>
-        </div>
+    return (
+        <section id="aboutme" className="min-h-screen bg-[#030712] p-6 md:p-16 scroll-snap-align-start">
+            <div className="max-w-7xl mx-auto py-10">
+                {/* Heading */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={transitionConfig}
+                    className="relative inline-block text-4xl text-[#F8FAFC] font-extrabold pb-4 mb-16 mx-auto text-center w-full"
+                >
+                    System Architect Focus & Experience
+                    <span className="block w-24 h-1 bg-[#F97316] mt-2 mx-auto rounded-full"></span>
+                </motion.h1>
 
-       {/*<div className=" flex flex-col gap-2 p-6 bg-white/5 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
-          <h1 className="text-2xl font-medium text-white">
-            Python Full Stack Developer | HMI Engineering Services
-          </h1>
-          <p className="font-light text-xl text-white/80">
-            6 month industrial internship in python full stack development
-          </p>
-        </div>
-        */}
-      </div>
-        
+                {/* Main Two-Column Layout with Vertical Separator */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                    
+                    {/* Left Column: Mission Statement & Experience */}
+                    <div className="lg:w-2/5 w-full">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ ...transitionConfig, delay: 0.2 }}
+                        >
+                            <h2 className="text-3xl font-bold text-[#F8FAFC] mb-4">My Professional Mandate</h2>
+                            <p className="text-xl text-gray-400 font-light mb-10 border-l-4 border-[#3B82F6] pl-4">
+                                My mandate is full-stack architecture, focusing on **decoupling complexity** and achieving high performance in cloud environments. I translate client goals into **measurable technical solutions**.
+                            </p>
+                        </motion.div>
+                        
+                        {/* Experience Card - Clean, High-Contrast */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ ...transitionConfig, delay: 0.4 }}
+                            className="p-6 bg-[#0F172A] rounded-xl border border-[#F97316]/50 shadow-xl hover:shadow-[#F97316]/20 transition-shadow duration-300"
+                        >
+                            <h1 className="text-xl font-bold text-[#F97316] flex justify-between items-center mb-1">
+                                Python Developer Intern
+                            </h1>
+                            <p className="text-sm text-[#3B82F6] mb-4">HMI Engineering Services | 11/2024 - 04/2025</p>
+                            <ul className="list-disc list-inside text-base text-gray-400 font-light space-y-1">
+                                <li>Developed HMI dashboards using **Django, React, and PostgreSQL**.</li>
+                                <li>Engineered and integrated **REST APIs** for real-time data management.</li>
+                            </ul>
+                        </motion.div>
+                    </div>
 
-      {/* Tech Stack */}
-      <div className="flex flex-col pt-5 items-center justify-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 40, duration: 1.7 }}
-          className="relative inline-block text-3xl  text-white font-semibold py-10 group"
-        >
-          My Tech Stack
-          <motion.span
-            initial={{ width: 0 }}
-            whileInView={{ width: '100%' }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
-            className="absolute bottom-0 left-0 h-1 rounded-lg bg-white group-hover:w-full transition-all duration-300"
-          />
-        </motion.h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mt-10">
-          {categories.map((category, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ type: 'spring', stiffness: 100, damping: 25, delay: index * 0.2, duration: 0.6 }}
-              className="bg-blue-900/20 rounded-2xl shadow-lg hover:shadow-lg hover:shadow-blue-600/80 p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300"
-            >
-              <h2 className="text-xl font-bold mb-6 text-center text-white">{category.title}</h2>
-              <div className="grid grid-cols-3 gap-4">
-                {category.tech.map((tech, i) => (
-                  <div key={i} className="flex flex-col items-center text-center hover:scale-110 transition-transform">
-                    {tech.icon}
-                    <span className="mt-2 text-sm text-white">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+                    {/* Right Column: Architectural Pillars (Timeline/Flowchart Look) */}
+                    <div className="lg:w-3/5 w-full relative pt-12">
+                        {/* Vertical Line Separator */}
+                        <div className="absolute left-6 top-0 bottom-0 w-1 bg-[#3B82F6]/20 hidden lg:block rounded-full"></div>
+                        
+                        {architecturalPillars.map((pillar, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ ...transitionConfig, delay: 0.6 + index * 0.2 }}
+                                className="relative flex mb-12"
+                            >
+                                {/* Timeline Dot/Node */}
+                                <div className="z-10 flex-shrink-0 w-12 h-12 bg-[#F97316] rounded-full flex items-center justify-center text-white shadow-xl shadow-[#F97316]/30 mr-6">
+                                    <pillar.icon className="w-6 h-6" />
+                                </div>
+                                
+                                {/* Content Card */}
+                                <div className="flex-grow p-6 bg-[#0F172A] rounded-xl border border-[#3B82F6]/30 hover:border-[#F97316] transition-colors duration-300 shadow-lg">
+                                    <h3 className="text-xl font-extrabold text-[#F8FAFC] mb-2">{pillar.title}</h3>
+                                    <p className="text-sm text-gray-500 mb-4">{pillar.description}</p>
+                                    <div className="flex flex-wrap gap-3 mt-4">
+                                        {pillar.tech.map((tech, i) => (
+                                            <TechIcon key={i} icon={tech.icon} name={tech.name} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 }

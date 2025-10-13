@@ -1,122 +1,106 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
-import {  motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiMenu, FiX } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiMenu, FiX, FiMail } from 'react-icons/fi';
+
+// Define navigation items
+const navItems = [
+  { name: 'Home', href: '/#home' },
+  { name: 'AboutMe', href: '/#aboutme' },
+  { name: 'Projects', href: '/#projects' },
+];
+
+// Define social media links
+const socialLinks = [
+  { icon: FiGithub, href: 'https://github.com/premchand505', label: 'GitHub' },
+  { icon: FiLinkedin, href: 'https://www.linkedin.com/in/gpremchand', label: 'LinkedIn' },
+  { icon: FiTwitter, href: '#', label: 'Twitter' }, // Use your actual Twitter link
+  { icon: FiInstagram, href: '#', label: 'Instagram' }, // Use your actual Instagram link
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  
-
   const toggleMenu = () => setIsOpen(!isOpen);
-  
+  const contactEmail = 'mailto:premchandgeddada@gmail.com'; 
 
   return (
-    <header className="fixed  text-white-50 w-full z-50  bg-blue-800 transition-all duration-300">
-      <div className="mx-auto container px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        {/* Logo */}
+    <header className="fixed w-full z-50 bg-[#030712]/90 backdrop-blur-sm border-b border-[#3B82F6]/20 transition-all duration-300">
+      <div className="mx-auto container px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+        
+        {/* Logo/Name (Left) */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ type: 'spring', stiffness: 100, damping: 25, delay: 0.4, duration: 1.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="flex space-x-2 items-center"
         >
-          <Image
-            className="mt-2 h-10 w-15 rounded-xl object-contain"
-            src="headerlogo.svg"
-            alt="Premchand-dev"
-            width={60}
-            height={40}
-          />
-          <span className="text-xl font-bold bg-white bg-clip-text text-transparent">
-            Premchand-dev
+          <span className="text-2xl font-extrabold text-[#F8FAFC] tracking-wider hover:text-[#F97316] transition-colors">
+            PREMCHAND.DEV
           </span>
         </motion.div>
 
-        {/* Desktop Navigation */}
-        <nav className="lg:flex hidden space-x-8">
-          {['Home', 'AboutMe', 'Projects'].map((item, index) => {
-            const linkTarget = `/#${item.toLowerCase()}`;
-            return (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.7 + index * 0.2 }}
+        {/* Desktop Navigation (Center-Symmetrical) */}
+        <nav className="hidden lg:flex space-x-10 items-center">
+          {navItems.map((item, index) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
+            >
+              <Link
+                href={item.href}
+                className="relative group text-[#F8FAFC] hover:text-[#F97316] font-medium transition-colors duration-300 text-base"
               >
-                <Link
-                  href={linkTarget}
-                  className="relative group text-white-50 hover:text-blue-400 font-medium transition-colors duration-300"
-                >
-                  {item}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
-                </Link>
-              </motion.div>
-            );
-          })}
+                {item.name}
+                {/* Symmetrical underline */}
+                <span className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-[3px] bg-[#F97316] group-hover:w-full transition-all duration-300 rounded-full"></span>
+              </Link>
+            </motion.div>
+          ))}
         </nav>
 
-        {/* Desktop Social Icons and Hire Me Button */}
-        <div className="lg:flex hidden items-center space-x-4">
+        {/* Social Icons & Contact (Right) */}
+        <div className="hidden lg:flex items-center space-x-4">
+          <div className="flex space-x-4 mr-4">
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+                className="text-[#3B82F6]/60 hover:text-[#F97316] transition-colors duration-300"
+              >
+                <social.icon className="w-5 h-5" />
+              </motion.a>
+            ))}
+          </div>
+          
           <motion.a
-            initial={{ opacity: 0, scale: 0.5 }}
+            href={contactEmail}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.3, duration: 0.9 }}
-            className="text-white-50 hover:text-blue-400 transition-colors duration-300"
-            href="https://github.com/premchand505"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
+            transition={{ delay: 1.3, duration: 0.5 }}
+            className="px-4 py-2 border-2 border-[#F97316] text-[#F8FAFC] rounded-lg font-semibold text-sm
+                       bg-[#F97316]/10 hover:bg-[#F97316]/20 transition-all duration-300 flex items-center gap-2"
           >
-            <FiGithub className="w-5 h-5" />
+            <FiMail className="w-4 h-4" />
+            Hire Me
           </motion.a>
-          <motion.a
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.3, duration: 0.9 }}
-            className="text-white-50 hover:text-blue-400 transition-colors duration-300"
-            href="https://www.linkedin.com/in/gpremchand"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FiLinkedin className="w-5 h-5" />
-          </motion.a>
-          <motion.a
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.3, duration: 0.9 }}
-            className="text-white-50 hover:text-blue-400 transition-colors duration-300"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-          >
-            <FiTwitter className="w-5 h-5" />
-          </motion.a>
-          <motion.a
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.3, duration: 0.9 }}
-            className="text-white-50 hover:text-blue-400 transition-colors duration-300"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <FiInstagram className="w-5 h-5" />
-          </motion.a>
-         
         </div>
 
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex items-center">
           <motion.button
-            whileTap={{ scale: 0.7 }}
+            whileTap={{ scale: 0.9 }}
             onClick={toggleMenu}
-            className="text-white-50"
+            className="text-white p-2 rounded-lg hover:bg-[#3B82F6]/20 transition-colors"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
             {isOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
@@ -124,61 +108,53 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <motion.div
-        initial={{ opacity: 0, x: '100%' }}
-        animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? '0%' : '100%' }}
-        transition={{ duration: 0.3 }}
-        className={`lg:hidden rounded-lg overflow-hidden mx-1 bg-black-800 shadow-lg px-5 py-5 space-y-5 ${
-          isOpen ? 'block' : 'hidden'
-        }`}
-      >
-        <nav className="flex flex-col space-y-3">
-          {['Home', 'AboutMe', 'Projects'].map((item) => {
-            const linkTarget = `/#${item.toLowerCase()}`;
-            return (
-              <Link
-                key={item}
-                href={linkTarget}
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ type: 'tween', duration: 0.3 }}
+            className="lg:hidden bg-[#030712] shadow-2xl p-6 border-t border-[#3B82F6]/20"
+          >
+            <nav className="flex flex-col items-center space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={toggleMenu}
+                  className="text-lg font-medium text-[#F8FAFC] hover:text-[#F97316] transition-colors duration-200 w-full text-center py-2"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex justify-center space-x-6 mt-6 pt-4 border-t border-[#3B82F6]/20">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-6 w-6 text-[#3B82F6]/60 hover:text-[#F97316] transition" />
+                </a>
+              ))}
+            </div>
+            <a
+                href={contactEmail}
                 onClick={toggleMenu}
-                className="text-white-50 font-medium py-2 hover:text-blue-400"
-              >
-                {item}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="pt-4 border-t border-black-600">
-          <div className="flex space-x-7">
-            <a
-              href="https://github.com/premchand505"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
+                className="mt-6 px-6 py-3 border-2 border-[#F97316] text-[#F8FAFC] rounded-lg font-semibold 
+                           bg-[#F97316]/10 hover:bg-[#F97316]/20 transition-all duration-300 flex items-center gap-2 justify-center w-full"
             >
-              <FiGithub className="h-5 w-5 text-white-50 hover:text-blue-400" />
+                <FiMail className="w-5 h-5" />
+                Contact Me
             </a>
-            <a
-              href="https://www.linkedin.com/in/gpremchand"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <FiLinkedin className="h-5 w-5 text-white-50 hover:text-blue-400" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <FiTwitter className="h-5 w-5 text-white-50 hover:text-blue-400" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FiInstagram className="h-5 w-5 text-white-50 hover:text-blue-400" />
-            </a>
-          </div>
-         
-       
-        </div>
-      </motion.div>
-
-      
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
