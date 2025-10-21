@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import Homesection from '../components/Homesection';
 import Aboutsection from '../components/Aboutsection';
 import Projectssection from '../components/Projectssection';
-
 export default function Home() {
   useEffect(() => {
     const handleHashScroll = () => {
@@ -23,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#030712]">
       <Homesection />
       <Aboutsection />
       <Projectssection />

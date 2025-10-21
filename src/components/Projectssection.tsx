@@ -5,22 +5,21 @@ import { FiCode, FiExternalLink, FiZap, FiTarget, FiDatabase, FiActivity, FiTren
 import Image from 'next/image';
 import Link from 'next/link';
 
-
-// Framer Motion Transition Configuration for quick fade-in
+// Framer Motion Transition Configuration
 const transitionConfig: Transition = {
     type: "tween", 
     duration: 0.6, 
     ease: "easeOut"
 };
 
-// Helper component for the Tech Tags
+// Helper component for the Tech Tags (V1 Style)
 const TechTag: React.FC<{ text: string }> = ({ text }) => (
-    <span className="px-3 py-1 bg-[#3B82F6]/10 text-[#3B82F6] text-xs font-medium rounded-full mr-2 mb-2 whitespace-nowrap">
+    <span className="px-3 py-1 bg-[#3B82F6]/10 text-[#3B82F6] text-xs font-medium rounded-full mr-2 mb-2 whitespace-nowFrap">
         {text}
     </span>
 );
 
-// Helper component for compact Metrics Display
+// Helper component for compact Metrics Display (V1)
 interface Metric {
     icon: React.ElementType;
     value: string;
@@ -29,7 +28,7 @@ interface Metric {
 }
 
 const MetricDisplay: React.FC<{ metrics: Metric[] }> = ({ metrics }) => (
-    <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-sm border-t border-[#3B82F6]/20 pt-4">
+    <div className="flex flex-wrap gap-x-6 gap-y-2 mt-6 text-sm border-t border-[#3B82F6]/20 pt-6">
         {metrics.map((metric, index) => (
             <div key={index} className="flex items-center space-x-1">
                 <metric.icon className={`w-4 h-4 ${metric.color}`} />
@@ -40,28 +39,13 @@ const MetricDisplay: React.FC<{ metrics: Metric[] }> = ({ metrics }) => (
     </div>
 );
 
-
-// Define Project Data with Metrics Icons
+// Define Project Data (V2 Text + V1 Metrics)
 const projectData = [
     {
-        title: 'Haptic Video Generator',
-        tag: 'AI/ML Microservices Platform',
-        description:
-            'Architected a resilient, cost-optimized microservices system with Next.js, NestJS, and FastAPI. Implemented an asynchronous job processing pipeline via **GCP Pub/Sub** to handle 250MB+ video uploads and achieve **85% accuracy** in haptic pattern generation (FFmpeg/Librosa). Achieved **99.9% uptime**.',
-        image: '/haptic-coverpage.png',
-        live: 'https://hapticvideo.vercel.app/',
-        github: 'https://github.com/premchand505/hapticvideo',
-        techStack: ['Next.js', 'NestJS', 'FastAPI', 'GCP Cloud Run', 'Docker'],
-        metrics: [
-            { icon: FiTarget, value: '85% Accuracy', label: 'ML', color: 'text-green-500' },
-            { icon: FiActivity, value: '99.9% Uptime', label: 'Resilience', color: 'text-blue-500' },
-        ]
-    },
-    {
         title: 'EventSphere',
-        tag: 'Scalable Event Management Platform',
+        tag: 'Full-Stack Event Platform',
         description:
-            'Built a production-ready, full-stack platform capable of handling **500+ concurrent users**. Features include JWT/OAuth, **Stripe payments**, and real-time chat with **Socket.IO**. Deployed on **Google Cloud Run** guaranteeing **<200ms API response times**.',
+            'A production-ready event management platform built with a modern stack. The backend, architected with NestJS and PostgreSQL, was optimized to achieve <strong class="text-[#F8FAFC] font-semibold"><200ms API response times</strong>. The system supports real-time chat via Socket.IO and handles secure payments with Stripe.',
         image: '/eventsphere-coverpage.png',
         live: 'https://eventsphere-frontend.vercel.app/',
         github: 'http://github.com/premchand505/eventsphere-frontend',
@@ -72,29 +56,42 @@ const projectData = [
         ]
     },
     {
-        title: 'Job Hunt Navigator',
-        tag: 'Chrome Extension & Dashboard',
+        title: 'Haptic Video Generator',
+        tag: 'AI/ML Microservices',
         description:
-            'Developed a Manifest V3 Chrome Extension and React dashboard. Engineered a **DOM scraping engine** using Chrome.debugger API, achieving **95% accuracy** on Indeed. Features real-time cross-device synchronization using Firebase Firestore with optimistic UI updates.',
-        image: '/eventsphere-coverpage.png',
+            'A cloud-native platform that processes large video files to generate AI-powered haptic feedback. Using a microservice architecture with FastAPI for the ML pipeline, the system achieved an impressive <strong class="text-[#F8FAFC] font-semibold">85% accuracy</strong> in haptic pattern generation from audio.',
+        image: '/haptic-coverpage.png',
+        live: 'https://haptic-studio.vercel.app/',
+        github: 'https://github.com/premchand505/haptic-studio',
+        techStack: ['Next.js', 'NestJS', 'FastAPI', 'GCP', 'Docker'],
+        metrics: [
+            { icon: FiTarget, value: '85% Accuracy', label: 'ML', color: 'text-green-500' },
+            { icon: FiActivity, value: '99.9% Uptime', label: 'Resilience', color: 'text-blue-500' },
+        ]
+    },
+    {
+        title: 'Job Hunt Navigator',
+        tag: 'Chrome Extension',
+        description:
+            'A browser tool to automate job application tracking. The core feature is a DOM scraping engine built with the Chrome.debugger API, which reached <strong class="text-[#F8FAFC] font-semibold">95% accuracy</strong> on Indeed job listings. User data is synced in real-time across devices using Firebase Firestore.',
+        image: '/eventsphere-coverpage.png', // NOTE: Update this image path
         live: '#',
         github: 'github.com/premchand505/job-hunt-navigator',
-        techStack: ['React', 'TypeScript', 'Chrome API', 'Firebase Auth/Firestore'],
+        techStack: ['React', 'TypeScript', 'Chrome API', 'Firebase'],
         metrics: [
             { icon: FiTarget, value: '95% Accuracy', label: 'Scraping', color: 'text-green-500' },
             { icon: FiDatabase, value: 'Optimistic UI', label: 'Sync', color: 'text-indigo-400' },
         ]
     },
-
      {
         title: 'Fitness Edge Landing Page',
-        tag: 'Gym Landing Page',
+        tag: 'Freelance Client Project',
         description:
-            'Designed and deployed a targeted landing page that simplified the user journey. Focused content and a clear call-to-action (CTA) funnel drove a 3x improvement in lead qualification compared to the original homepage.',
+            'Designed and deployed a responsive, high-conversion landing page for a local gym. Focused the UX and CTA funnel to help drive a <strong class="text-[#F8FAFC] font-semibold">25-30% increase</strong> in lead conversions compared to the original homepage.',
         image: '/gym-coverpage.png',
         live: 'https://fitnessedge-two.vercel.app/',
-        github: 'github.com/premchand505/job-hunt-navigator',
-        techStack: ['React', 'JavaScript', 'CSS3', 'HTML%'],
+        github: 'github.com/premchand505/job-hunt-navigator', // NOTE: Update this GitHub link
+        techStack: ['Next.js', 'Tailwind CSS', 'React', 'JavaScript'],
         metrics: [
             { icon: FiTarget, value: '25% Lead Conversion', label: 'LEADS', color: 'text-green-500' },
             { icon: FiTarget, value: 'User Friendly UI', label: 'UI', color: 'text-indigo-400' },
@@ -110,7 +107,7 @@ export default function ProjectsSection() {
         >
             <div className="flex flex-col pt-5 items-center justify-center gap-6 max-w-7xl mx-auto">
                 
-                {/* Heading */}
+                {/* Heading (V1 Style) */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -118,65 +115,57 @@ export default function ProjectsSection() {
                     transition={transitionConfig}
                     className="relative inline-block text-4xl text-[#F8FAFC] font-extrabold pb-4 mb-12 mx-auto text-center w-full"
                 >
-                    Featured  Projects
-                    <span className="block  h-1 bg-[#F97316]/90 mt-2 mx-auto rounded-full"></span>
+                    Featured Projects
+                    <span className="block h-1 bg-[#F97316]/90 mt-2 mx-auto rounded-full"></span>
                 </motion.h1>
 
-                {/* Projects List */}
-                <div className="w-full space-y-16">
+                {/* Projects List (V2 Layout) */}
+                <div className="w-full space-y-20">
                     {projectData.map((project, index) => (
                         <motion.div
                             key={index}
-                            // Sleek animation: fade-in only, no heavy horizontal movement
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.1 }}
-                            transition={{ ...transitionConfig, delay: index * 0.1 }}
-                            
-                            // Compact, refined card style
-                            className={`flex flex-col rounded-xl overflow-hidden shadow-2xl bg-[#0F172A] 
-                                        lg:flex-row border border-[#3B82F6]/30 hover:border-[#F97316]/50 transition-all duration-300 group
-                                        hover:shadow-[0_15px_40px_rgba(249,115,22,0.1)]`} 
+                            transition={{ duration: 0.5 }}
+                            className={`group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center`}
                         >
-                            {/* Image Container (Visual Priority) */}
-                            <div 
-                                className={`w-full lg:w-3/5 relative h-64 md:h-80 ${ 
-                                    index % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'
-                                }`}
-                            >
+                            
+                            {/* Image Container (V1 Colors) */}
+                            <div className={`relative h-80 rounded-xl overflow-hidden border border-[#3B82F6]/30 shadow-2xl 
+                                         hover:border-[#F97316]/50 transition-all duration-300
+                                         ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+                                
+                                {/* --- IMAGE COMPONENT UPDATED --- */}
                                 <Image
                                     src={project.image}
                                     alt={project.title}
-                                    layout="fill"
-                                    objectFit="cover"
+                                    fill={true} // Replaces layout="fill"
+                                    style={{ objectFit: 'cover' }} // Replaces objectFit="cover"
                                     className="transition-transform duration-500 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-black/40"></div>
+                                {/* --- END UPDATE --- */}
+
+                                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
                             </div>
 
-                            {/* Text/Details (The primary content block) */}
-                            <div 
-                                className={`p-6 w-full lg:w-2/5 flex flex-col ${ 
-                                    index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'
-                                }`}
-                            >
-                                <p className="text-[#F97316] font-mono text-sm uppercase tracking-widest mb-1">
+                            {/* Text/Details Container (V1 Colors) */}
+                            <div className={`flex flex-col ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                                <p className="text-[#F97316] font-mono text-sm uppercase tracking-widest mb-2">
                                     {project.tag}
                                 </p>
-                                <h2 className="text-3xl font-extrabold mb-3 text-[#F8FAFC]">{project.title}</h2>
-                                <p className="text-gray-400 text-base mb-4 leading-relaxed line-clamp-4">
-                                    {project.description}
-                                </p>
+                                <h2 className="text-3xl font-extrabold mb-4 text-[#F8FAFC]">{project.title}</h2>
+                                <p className="text-gray-400 text-base mb-6 leading-relaxed"
+                                   dangerouslySetInnerHTML={{ __html: project.description }} />
 
-                                {/* Tech Stack Tags */}
-                                <div className="flex flex-wrap mb-4">
+                                <div className="flex flex-wrap gap-2 mb-6">
                                     {project.techStack.map((tech) => (
                                         <TechTag key={tech} text={tech} />
                                     ))}
                                 </div>
-
-                                {/* Action Buttons */}
-                                <div className="flex gap-4 mb-4">
+                                
+                                {/* Action Buttons (V1 Style) */}
+                                <div className="flex gap-4">
                                     <Link
                                         href={project.live}
                                         target="_blank"
@@ -194,10 +183,9 @@ export default function ProjectsSection() {
                                         <FiCode /> Code
                                     </Link>
                                 </div>
-                                
-                                {/* Metrics Display (Compact and Integrated) */}
-                                <MetricDisplay metrics={project.metrics} />
 
+                                {/* Metrics Display (V1 Component) */}
+                                <MetricDisplay metrics={project.metrics} />
                             </div>
                         </motion.div>
                     ))}

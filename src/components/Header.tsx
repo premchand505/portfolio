@@ -4,14 +4,12 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiMenu, FiX, FiMail } from 'react-icons/fi';
-
 // Define navigation items
 const navItems = [
   { name: 'Home', href: '/#home' },
   { name: 'AboutMe', href: '/#aboutme' },
   { name: 'Projects', href: '/#projects' },
 ];
-
 // Define social media links
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/premchand505', label: 'GitHub' },
@@ -19,7 +17,6 @@ const socialLinks = [
   { icon: FiTwitter, href: '#', label: 'Twitter' }, // Use your actual Twitter link
   { icon: FiInstagram, href: '#', label: 'Instagram' }, // Use your actual Instagram link
 ];
-
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
