@@ -72,7 +72,7 @@ const Homesection = () => {
             <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between relative z-10">
                 
                 {/* Left Column: Text Content */}
-                <div className="lg:w-3/5 w-full text-[#F8FAFC] order-2 lg:order-1 mt-10 lg:mt-0">
+                <div className="lg:w-3/5 w-full text-[#F8FAFC] order-2 lg:order-1 mt-10 lg:mt-0 ">
                     <motion.p
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -86,7 +86,7 @@ const Homesection = () => {
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ ...fadeInUpTransition, delay: 0.5 }}
-                        className="text-6xl md:text-6xl lg:text-8xl font-extrabold z-10 my-0 leading-none"
+                        className="text-5xl md:text-6xl lg:text-8xl  font-extrabold z-10 my-0 leading-none"
                     >
                         PREMCHAND
                     </motion.h1>
@@ -164,7 +164,7 @@ const Homesection = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ ...fadeInUpTransition, delay: 1.4 }}
-                        className="p-4 bg-[#0F172A] rounded-lg border border-[#3B82F6]/50 shadow-lg mt-8 w-64 md:w-80"
+                        className="p-4 bg-[#000000] rounded-lg border border-[#3B82F6]/50 shadow-lg mt-8 w-64 md:w-80"
                     >
                         <div className="flex items-center justify-between">
                             <p className="text-sm font-mono text-gray-400 uppercase tracking-widest">Website Visitors</p>
